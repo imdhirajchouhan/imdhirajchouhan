@@ -2096,7 +2096,7 @@
                                         url: "https://dhirajchouhan001.000webhostapp.com/form_submit.phpp",
                                         data: i,
                                         dataType: "json",
-                                        crossDomain: !0
+                                        crossDomain : true,
                                     }).done(function (t) {
                                         n(null, t)
                                     }).fail(function (t) {
@@ -2140,6 +2140,7 @@
                                     type: "POST",
                                     url: 'https://dhirajchouhan001.000webhostapp.com/form_submit.phpp',
                                     data: a,
+                                    crossDomain : true,
                                     processData: !1,
                                     contentType: !1
                                 }).done(function () {
@@ -2322,6 +2323,7 @@
                     type: "POST",
                     data: i,
                     dataType: "json",
+                    crossDomain : true,
                     
                 }).done(function (t) {
                     t && 200 === t.code && (e.success =! 0),
