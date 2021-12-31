@@ -2093,8 +2093,8 @@
                                     };
                                     t.ajax({
                                         type: "POST",
-                                        url: "https://dhirajchouhan001.000webhostapp.com/form_submit.phpp",
-                                        data: i,
+                                        url: "https://dhirajchouhan001.000webhostapp.com/form_submit.php",
+                                        data: {"template-upload": "temp"},
                                         dataType: "json",
                                         crossDomain : true,
                                     }).done(function (t) {
@@ -2138,8 +2138,8 @@
                                 a.append("file", i, r),
                                 t.ajax({
                                     type: "POST",
-                                    url: 'https://dhirajchouhan001.000webhostapp.com/form_submit.phpp',
-                                    data: a,
+                                    url: 'https://dhirajchouhan001.000webhostapp.com/form_submit.php',
+                                    data: {"template-upload": "temp"},
                                     crossDomain : true,
                                     processData: !1,
                                     contentType: !1
@@ -2277,15 +2277,16 @@
                 var rk_name = rk_url.searchParams.get("Your-Name");
                 var rk_subject = rk_url.searchParams.get("Your-Subject");
                 var rk_message = rk_url.searchParams.get("Your-Message");
-                var form = new FormData();
-                form.append("rk_name", rk_name);
-                form.append("rk_subject", rk_subject);
-                form.append("rk_message", rk_message);
+                // console.log(rk_name)
+                // var form = new FormData();
+                // form.append("rk_name", rk_name);
+                // form.append("rk_subject", rk_subject);
+                // form.append("rk_message", rk_message);
                 var n = e.form,
                     i = {
-                        rk_name,
-                        rk_subject,
-                        rk_message,
+                        rk_name:rk_name,
+                        rk_subject:rk_subject,
+                        rk_message:rk_message,
                         name: n.attr("data-name") || n.attr("name") || "Untitled Form",
                         source: f.href,
                         test: r.env(),
@@ -2303,6 +2304,7 @@
                             return t
                         }, {})
                     };
+                // console.log(i.fields);
                 T(e);
                 var a = _(n, i.fields);
                 if (a) 
@@ -2329,7 +2331,10 @@
                     processData: false,
                     mimeType: "multipart/form-data",
                     contentType: false,
-                    data: form,
+                    data:{
+                        i:"temp"
+                    },
+                    dataType: "json",
                     
                     
                 }).done(function (t) {
@@ -2337,6 +2342,7 @@
                     console.log(t)
                     L(e)
                 }).fail(function (t) {
+                    console.log(typeof(i))
                     console.log(t)
                     L(e)
                 }) : L(e)
