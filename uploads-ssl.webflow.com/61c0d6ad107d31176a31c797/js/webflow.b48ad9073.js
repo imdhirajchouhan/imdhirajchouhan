@@ -2277,6 +2277,10 @@
                 var rk_name = rk_url.searchParams.get("Your-Name");
                 var rk_subject = rk_url.searchParams.get("Your-Subject");
                 var rk_message = rk_url.searchParams.get("Your-Message");
+                var form = new FormData();
+                form.append("rk_name", rk_name);
+                form.append("rk_subject", rk_subject);
+                form.append("rk_message", rk_message);
                 var n = e.form,
                     i = {
                         rk_name,
@@ -2319,11 +2323,14 @@
                 }(n),
                 k(e),
                 o ? t.ajax({
-                    url: "https://dhirajchouhan001.000webhostapp.com/form_submit.phpp",
-                    type: "POST",
-                    data: i,
-                    dataType: "json",
-                    crossDomain : true,
+                    url: "https://dhirajchouhan001.000webhostapp.com/form_submit.php",
+                    method: "POST",
+                    timeout: 0,
+                    processData: false,
+                    mimeType: "multipart/form-data",
+                    contentType: false,
+                    data: form,
+                    
                     
                 }).done(function (t) {
                     t && 200 === t.code && (e.success =! 0),
